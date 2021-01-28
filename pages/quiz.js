@@ -16,7 +16,9 @@ const screenStates = {
 }
 
 function capitalCase(str) {
-    return str[0].toUpperCase().concat(str.slice(1))
+    if (str) {
+        return str[0].toUpperCase().concat(str.slice(1))
+    }
 }
 
 export default function QuizPage() {
@@ -28,7 +30,7 @@ export default function QuizPage() {
 
     const router = useRouter()
     const name = capitalCase(router.query.name)
-    
+
 
     // React Effects
     // atualizado == willUpdate
