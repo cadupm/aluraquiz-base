@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'
-import db from '../db.json';
 
+import db from '../db.json';
 import QuizLogo from '../src/components/QuizLogo';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
 import QuestionWidget from '../src/components/QuestionWidget'
 import LoadingWidget from '../src/components/LoadingWidget'
+import ResultWidget from '../src/components/ResultWidget'
 
 const screenStates = {
     QUIZ: 'QUIZ',
@@ -15,22 +15,22 @@ const screenStates = {
     RESULT: 'RESULT',
 }
 
-function capitalCase(str) {
-    if (str) {
-        return str[0].toUpperCase().concat(str.slice(1))
-    }
-}
 
 export default function QuizPage() {
     // console.log('quiz criados', db.questions)
     const [screenState, setScreenState ] = useState(screenStates.LOADING)
     const [questionIndex, setQuestionIndex] = useState(0)
+    const [results, setResults] = useState([])
     const question = db.questions[questionIndex]
     const totalQuestions = db.questions.length
 
-    const router = useRouter()
-    const name = capitalCase(router.query.name)
 
+    function addResult(result) {
+        setResults([
+            ...results,
+            result
+        ])
+    }
 
     // React Effects
     // atualizado == willUpdate
@@ -68,13 +68,12 @@ export default function QuizPage() {
                 questionIndex={questionIndex}
                 totalQuestions={totalQuestions}
                 onSubmit={handleSubmitQuiz}
+                addResult={addResult}
             />
         }
         
         { screenState === 'RESULT' &&
-            <div>
-                Parabéns, {name}! Você acertou X questões. 
-            </div>
+            <ResultWidget results={results} />
             
         }
 
