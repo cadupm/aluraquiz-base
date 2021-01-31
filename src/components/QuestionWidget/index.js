@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Widget from '../Widget'
 import Button from '../Button'
 import AlternativesForm from '../AlternativesForm'
+import BackLinkArrow from '../BackLinkArrow'
 
 
 function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, addResult }) {
@@ -28,6 +29,7 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
     return (
       <Widget>
           <Widget.Header>
+              <BackLinkArrow href='/' />
               <h3>Pergunta {questionIndex + 1} de {totalQuestions}</h3>
           </Widget.Header>
 
@@ -78,7 +80,7 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
                 }
 
                 {!isCorrect && isQuestionSubmited &&
-                    <p>Voce errou</p>
+                    <p style={{color: 'red'}}>Voce errou</p>
                 }   
                 
               </AlternativesForm>

@@ -11,7 +11,8 @@ function capitalCase(str) {
 
 function ResultWidget({ results }) {
     const router = useRouter()
-    const name = capitalCase(router.query.name)
+    // console.log(router.query)
+    const [name, _] = capitalCase(router.query.name).split('/')
 
     const totalRightQuestions = results.reduce((accumulator, currentValue) => {
         const isRight = currentValue === true
