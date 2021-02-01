@@ -102,7 +102,7 @@ export default function Home() {
                 <li key={linkExterno}>
                   <Widget.Topic
                     as={Link} 
-                    href={ name.length === 0 ? 'javascript:void(0)' : `/quiz?name=${name}/${projectName}___${githubUser}`}
+                    href={ name.length === 0 ? 'javascript:void(0)' : `/quiz/${projectName}___${githubUser}`}
                     onClick={handleLinkClick}
                   >
                       {githubUser}/{projectName}
