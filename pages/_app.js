@@ -24,8 +24,8 @@ const GlobalStyle = createGlobalStyle`
   }
   
   #__next {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
   }
 `;

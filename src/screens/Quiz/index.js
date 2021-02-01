@@ -15,7 +15,7 @@ const screenStates = {
 }
 
 
-export default function QuizPage({ externalQuestions, externalBg }) {
+export default function QuizScreen({ externalQuestions, externalBg }) {
     
     // console.log('quiz criados', db.questions)
     const [screenState, setScreenState ] = useState(screenStates.LOADING)
@@ -24,6 +24,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
     const question = externalQuestions[questionIndex]
     const totalQuestions = externalQuestions.length
 
+    console.log(externalBg)
 
     function addResult(result) {
         setResults([

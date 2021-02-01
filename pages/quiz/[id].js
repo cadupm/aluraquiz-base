@@ -2,22 +2,22 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import QuizScreen from '../../src/screens/Quiz'
 
+
 export default function QuizDaGaleraPage({ dbExterno }) {
-    // console.log(dbExterno)
+    console.log(dbExterno.theme)
 
     return (
-        <div>
-            Desafio da próxima aula junto com as animações
-
-            <ThemeProvider theme={dbExterno.theme} />
+        <>
+            <ThemeProvider theme={dbExterno.theme}>
             <QuizScreen 
                 externalQuestions={dbExterno.questions}
                 externalBg={dbExterno.bg}
             />
+            </ThemeProvider>
             {/*<pre style={{color: 'black'}}>
                 {JSON.stringify(dbExterno.questions, null, 4)}
             </pre>*/}
-        </div>
+        </>
     )
 }
 
